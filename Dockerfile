@@ -19,6 +19,7 @@ RUN apk --no-cache add \
     curl \
     openssh \
     gettext \
+    subversion \
     tzdata
 RUN addgroup \
     -S -g 1000 \
@@ -36,10 +37,8 @@ ENV USER git
 ENV GITEA_CUSTOM /data/gitea
 ENV GODEBUG=netdns=go
 
-## GET DOCKER FILES
 RUN svn export https://github.com/go-gitea/gitea/trunk/docker ./ --force
 
-# GET GITEA
 RUN mkdir -p /app/gitea && \
     curl -SLo /app/gitea/gitea https://github.com/go-gitea/gitea/releases/download/v$VERSION/gitea-$VERSION-linux-arm-7 && \
 chmod 0755 /app/gitea/gitea
