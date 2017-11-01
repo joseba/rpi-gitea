@@ -1,4 +1,4 @@
-FROM multiarch/alpine:armhf-v3.6
+FROM resin/armhf-alpine:latest
 
 LABEL maintainer="joseba.io"
 
